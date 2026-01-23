@@ -208,3 +208,5 @@ levels = {
         }
     }
 }
+def class_info(class_find, level_find):
+    return levels[class_find][level_find]
