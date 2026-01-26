@@ -1,5 +1,7 @@
 #MW_CP2 dictionary of characters
 
+import random
+
 characters = {
     "base" : {
         "class" : "",
@@ -25,10 +27,16 @@ races = {
 }
 
 def roll():
-    
+    dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6)]
+
+    dice.remove(min(dice))
+
+    stat = sum(dice)
+    return stat
 
 def statAddition(race, char_choice, chars):
     for i in chars[char_choice]["stats"]:
+        pass
 
 
 def statDecision(char_choice, chars):

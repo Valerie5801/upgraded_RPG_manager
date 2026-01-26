@@ -1,8 +1,8 @@
 def u_input():
-    return input('> ').lower().strip()
+    return input(ask).lower().strip()
 def int_input(max = 100000):
     while True:
-        num = u_input()
+        num = u_input(ask)
         try:
             int(num)
         except:
