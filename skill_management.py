@@ -14,3 +14,9 @@ def level_up(character):
         choice = choice_input(['strength','dexterity','resilience','magic'])
         character['stats'][choice] += 1
     return character
+def skill_allocation(character):
+    for i in range(character['skill points']):
+        print('Assign skill points where?')
+        for i in character['skills'].keys():
+            print(f'{i}: {character['skills'][i]}')
+            #NOT FINISHED! DON'T USE THIS
