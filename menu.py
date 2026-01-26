@@ -9,10 +9,13 @@ def main_menu():
         match user_choice:
             case "1":
                 #run character creation
+                pass
             case "2":
                 #when all other functions exist, put them here.
+                pass
             case "3":
                 #show character function here
+                pass
             case "4":
                 break
             case _:
