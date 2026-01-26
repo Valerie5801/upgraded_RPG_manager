@@ -11,9 +11,9 @@ def int_input(max = 100000):
             return num
         else:
             print('Input is too high!')
-def choice_input(choices):
+def choice_input(choices,prompt = '> '):
     while True:
-        choice = u_input()
+        choice = u_input(prompt)
         if choice in choices:
             return choice
         else:
