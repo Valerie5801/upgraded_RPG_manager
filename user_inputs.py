@@ -22,4 +22,7 @@ match add_rem_choice:
 
 
 
-#Inputs for 
+#Inputs for Character Creation
+new_name = input("Name for the new character?: ")
+#Print the available races
+new_race = input("What race do you want?: ")
