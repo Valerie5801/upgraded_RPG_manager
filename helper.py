@@ -1,5 +1,5 @@
-def u_input():
-    return input('> ').lower().strip()
+def u_input(prompt = '> '):
+    return input(prompt).lower().strip()
 def int_input(max = 100000):
     while True:
         num = u_input()
