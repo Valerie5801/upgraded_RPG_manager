@@ -23,10 +23,19 @@ races = {
 }
 
 def roll():
-    
+    dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6)]
+
+    dice.remove(min(dice))
+
+    stat = sum(dice)
+    return stat
 
 def statAddition(race, char_choice, chars):
-    for i in chars[char_choice]["stats"]:
+    indexing = 0
+    while indexing > 4:
+        pass
+
+        
 
 
 def statDecision(char_choice, chars):
