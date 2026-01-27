@@ -1,8 +1,8 @@
 def u_input(prompt = '> '):
     return input(prompt).lower().strip()
-def int_input(max = 100000):
+def int_input(max = 100000,prompt='> '):
     while True:
-        num = u_input(ask)
+        num = u_input(prompt)
         try:
             int(num)
         except:
