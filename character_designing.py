@@ -1,7 +1,8 @@
 #MW_CP2 dictionary of characters
 
-character_base = {
-    "class" : "",
+characters = {
+    "base" : {
+        "class" : "",
 
     "race" : "",
 
