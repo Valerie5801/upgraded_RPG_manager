@@ -1,21 +1,17 @@
 #MW_CP2 dictionary of characters
 
-import random
+character_base = {
+    "class" : "",
 
-characters = {
-    "base" : {
-        "class" : "",
+    "race" : "",
 
-        "race" : "",
+    "stats" : (0,0,0,0),#strength, dexterity, ressilience, and magic
 
-        "stats" : (0,0,0,0),#strength, dexterity, ressilience, and magic
+    "skills" : {},
 
-        "skills" : {},
-
-        "inventory" : []
-    }
+    "inventory" : []
 }
-
+#character_index["Samantha"] = character_base
 races = {
     "human" : (1,1,1,1),
 
