@@ -30,4 +30,4 @@ def skill_reset(character):
     for i in skills.keys():
         character['skills'][i] = 0
         character['skill points'] += skills[i]
-        return character
+    return character
