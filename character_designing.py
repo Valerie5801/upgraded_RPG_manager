@@ -2,7 +2,7 @@
 
 import random
 
-characters = {
+character_index = {
     "base" : {
         "class" : "",
 
