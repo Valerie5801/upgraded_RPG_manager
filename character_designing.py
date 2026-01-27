@@ -37,7 +37,8 @@ def roll():
 def statAddition(race, char_choice, chars):
     indexing = 0
     while indexing > 4:
-        
+        pass
+
         
 
 
