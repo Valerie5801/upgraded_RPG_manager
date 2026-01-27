@@ -35,8 +35,10 @@ def roll():
     return stat
 
 def statAddition(race, char_choice, chars):
-    for i in chars[char_choice]["stats"]:
-        pass
+    indexing = 0
+    while indexing > 4:
+        
+        
 
 
 def statDecision(char_choice, chars):
