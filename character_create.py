@@ -26,7 +26,7 @@ def character_create(character_index):
         else:
             return False
     
-    while not False:
+    while 14:
         name = u_input("What is your character's name? ").title()
         if check(name, character_index) == False:
             character_index[name] = {}
@@ -34,3 +34,7 @@ def character_create(character_index):
         else:
             print("You already have a character with that name. Please try again.")
             continue
+    
+    character_index[name['Race']] = u_input('What is your race? ').title()
+
+    
