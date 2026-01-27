@@ -2,6 +2,8 @@
 import random
 from helper import u_input
 character_index = {}
+races = ['human', 'orc', 'elf', 'human']
+
 
 def character_create(character_index):
 
@@ -32,4 +34,8 @@ def character_create(character_index):
     
     character_index[name['Race']] = u_input('What is your race? ').title()
 
-    
+    character_index[name['Class']] = u_input('What is your class? ').title()
+
+    character_index[name['Skills']] = {}
+
+character_create(character_index)
