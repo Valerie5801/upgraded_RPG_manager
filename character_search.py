@@ -7,11 +7,19 @@ def search(character_index):
         char = character_index[name]
         if query in name:
             potentials.append(name)
-        elif query in char['level']:
+        elif query in str(char['level']):
             potentials.append(name)
         elif query in char['race']:
             potentials.append(name)
         elif query in char['class']:
             potentials.append(name)
-    #not finished! Dont use this yet!
-    
+    index = 0
+    for char in potentials:
+        index += 1
+        print(f'{index}: {char}')
+    choice = choice_input(potentials + list(range(1,index+1)))
+    if choice in potentials:
+        return choice
+    elif choice in list(range(1,index+1)):
+        return potentials[choice-1]
+
