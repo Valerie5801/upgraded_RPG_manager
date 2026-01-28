@@ -7,8 +7,9 @@ def level_up(character):
     lvl = class_info(char_class,char_lvl)
     character['skill points'] += lvl['skill points']
     for skill in lvl['skills']:
-        if not skill in character['skills'].keys():
+        if not skill in character['learned skills']:
             character['skills'][skill] = 0
+            character['learned skills'].append(skill)
     for i in range(lvl['abilities']):
         print('What ability do you want to increase? (strength, dexterity, resilience, magic)')
         choice = choice_input(['strength','dexterity','resilience','magic'])
