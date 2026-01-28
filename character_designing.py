@@ -20,7 +20,7 @@ character_base = {
 character_index = {
       
 }
-
+#character_index["Samantha"] = character_base
 races = {
     "human" : (1,1,1,1),
 

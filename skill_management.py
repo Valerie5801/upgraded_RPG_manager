@@ -24,3 +24,10 @@ def skill_allocation(character):
         character['skills'][chosen_skill] += 1
         print(f'Added one skill point to {chosen_skill}.')
         character['skill points'] -= 1
+        return character
+def skill_reset(character):
+    skills = character['skills']
+    for i in skills.keys():
+        character['skills'][i] = 0
+        character['skill points'] += skills[i]
+    return character

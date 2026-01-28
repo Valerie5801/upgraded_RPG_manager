@@ -2,6 +2,8 @@
 import random
 from helper import u_input
 character_index = {}
+races = ['human', 'orc', 'elf', 'human']
+
 
 def character_create(character_index):
 
@@ -21,7 +23,7 @@ def character_create(character_index):
         else:
             return False
     
-    while not False:
+    while 14:
         name = u_input("What is your character's name? ").title()
         if check(name, character_index) == False:
             character_index[name] = {}
@@ -29,3 +31,11 @@ def character_create(character_index):
         else:
             print("You already have a character with that name. Please try again.")
             continue
+    
+    character_index[name['Race']] = u_input('What is your race? ').title()
+
+    character_index[name['Class']] = u_input('What is your class? ').title()
+
+    character_index[name['Skills']] = {}
+
+character_create(character_index)
