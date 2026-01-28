@@ -1,8 +1,12 @@
 #MW_CP2 dictionary of characters
+from helper import u_input
+from helper import int_input
+from helper import choice_input
 
-characters = {
-    "base" : {
-        "class" : "",
+import random
+
+character_base = {
+    "class" : "",
 
     "race" : "",
 
@@ -11,6 +15,10 @@ characters = {
     "skills" : {},
 
     "inventory" : []
+}
+
+character_index = {
+      
 }
 #character_index["Samantha"] = character_base
 races = {
@@ -23,42 +31,30 @@ races = {
     "orc" : (2,-1,3,0)
 }
 
-def roll():
-    dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6)]
+def statGen():
 
-    dice.remove(min(dice))
+        def roll():
+            dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6),random.randint(1,6)]
+            dice.remove(min(dice))
+            stat = sum(dice)
+            return stat
+        
+        stat_options = {"1" : roll(), "2" : roll(), "3" : roll(), "4" : roll()}
+        return [stat_options]
 
-    stat = sum(dice)
-    return stat
-
-def statAddition(race, char_choice, chars):
-    indexing = 0
-    while indexing > 4:
-        pass
+def statBlock(character, character_indx):
+    options = statGen
+    choices = options.keys
+    def playerDecision(stat):
+        while True:
+            print(f"What would you like your {stat} to be?")
+            turns = 0
+            while turns < len(choices):
+                print(f"Press {choices[turns]} to set strength to {options[choices[turns]]}\n")
+                turns += 1
+            
+            player_choice = input("What is your choice? ")
+            if player_choice.isDigit():
 
         
 
-
-def statDecision(char_choice, chars):
-    while True:
-        race = input("What race would you like? Human, Dwarf, Elf, or Orc?").strip().lower()
-
-        match race:
-            case "human":
-                pass
-                break
-
-            case "dwarf":
-                pass
-                break
-
-            case "elf":
-                pass
-                break
-
-            case "orc":
-                pass
-                break
-
-            case _:
-                pass
