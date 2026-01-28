@@ -4,9 +4,10 @@ def int_input(max = 100000,prompt='> '):
     while True:
         num = u_input(prompt)
         try:
-            int(num)
+            num = int(num)
         except:
             print('Input is not a number!')
+            continue
         if num <= max:
             return num
         else:
@@ -18,3 +19,4 @@ def choice_input(choices,prompt = '> '):
             return choice
         else:
             print('Please select a valid choice!')
+int_input()
