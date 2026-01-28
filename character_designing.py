@@ -14,6 +14,8 @@ character_base = {
 
     "skills" : {},
 
+    "learned skills" : {},
+
     "inventory" : []
 }
 
@@ -39,22 +41,15 @@ def statGen():
             stat = sum(dice)
             return stat
         
-        stat_options = {"1" : roll(), "2" : roll(), "3" : roll(), "4" : roll()}
+        stat_options = [roll(),roll(),roll(),roll()]
         return [stat_options]
 
 def statBlock(character, character_indx):
-    options = statGen
-    choices = options.keys
-    def playerDecision(stat):
-        while True:
-            print(f"What would you like your {stat} to be?")
-            turns = 0
-            while turns < len(choices):
-                print(f"Press {choices[turns]} to set strength to {options[choices[turns]]}\n")
-                turns += 1
-            
-            player_choice = input("What is your choice? ")
-            if player_choice.isDigit():
+    stats_to_be_used = statGen()
+    while True:
+        print("\n\nYou are currently picking for strength\n")
+        choice = input(f"Press 1 if you would like your strength to be{stats_to_be_used[0]}\nPress 2 if you would like your strength to be{stats_to_be_used[1]}\nPress 3 if you would like your strength to be{stats_to_be_used[2]}\nPress 4 if you would like your strength to be{stats_to_be_used[3]}")
+        if choice
 
         
 
