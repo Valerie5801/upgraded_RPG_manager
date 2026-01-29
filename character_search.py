@@ -1,7 +1,7 @@
 from helper import u_input
 from helper import choice_input
 def search(character_index):
-    query = u_input('Search: ')
+    query = u_input('Search by name, level, race, or class: ')
     potentials = []
     for name in character_index.keys():
         char = character_index[name]
@@ -21,8 +21,8 @@ def search(character_index):
     index = 0
     for char in potentials:
         index += 1
-        print(f'{index}: {char}')
-    choice = choice_input(potentials + list(range(1,index+1)))
+        print(f'{index}: {char.capitalize()}')
+    choice = choice_input(potentials + list(range(1,index+1)), "Type the name of the character you want to view: ")
     if choice in potentials:
         return choice
     elif choice in list(range(1,index+1)):

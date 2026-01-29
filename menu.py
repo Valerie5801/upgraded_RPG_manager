@@ -36,8 +36,8 @@ def main_menu():
                 character_create(character_index)
             case "2":
                 character = get_character()
-                print('1. Edit Inventory\n2. Level Up\n3. Allocate Skill Points\n4. Reset Skill Points')
-                edit_choice = choice_input(['1','2','3','4'])
+                print('You can: \n1. Edit Inventory\n2. Level Up\n3. Allocate Skill Points\n4. Reset Skill Points')
+                edit_choice = choice_input(['1','2','3','4'], "What would you like to do?(1/2/3/4): ")
                 match edit_choice:
                     case "1":
                         character['inventory'] = input_inventory(character['inventory'])
@@ -52,9 +52,9 @@ def main_menu():
                         print("An error ocurred. Please try again.")
             case "3":
                 character = get_character()
-                print(f'Race: {character['key info'][0]}\n')
-                print(f'Class: {character['key info'][1]}\n')
-                print('Stats:')
+                print(f'\nRace: {character['key info'][0]}')
+                print(f'Class: {character['key info'][1]}')
+                print('\nStats:')
                 for stat in character['stats']:
                     print(f'{stat}: {character['stats'][stat]}')
                 print('\nSkills:')
@@ -63,8 +63,8 @@ def main_menu():
                 print('\nInventory:')
                 for item in character['inventory']:
                     print(item)
-                print(f'\nLevel: {character['level']}')
-                print(f'\nSkill Points: {character['skill points']}')
+                print(f'Level: {character['level']}')
+                print(f'Skill Points: {character['skill points']}')
 
             case "4":
                 break

@@ -10,7 +10,7 @@ exist_inventory = ["potion", "sword", "shield"]
 def input_inventory(inventory):
     while True:
         if inventory:
-            print("Here's the items in your character's inventory:")
+            print("\nHere's the items in your character's inventory:")
             for item in inventory:
                 print(item)
 
