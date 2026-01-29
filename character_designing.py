@@ -6,17 +6,19 @@ from helper import choice_input
 import random
 
 character_base = {
-    "class" : "",
+    "key info" : ('orc','wizard'), #race and class
 
-    "race" : "",
-
-    "stats" : (0,0,0,0),#strength, dexterity, ressilience, and magic
+    "stats" : {'strength': 0,'dexterity': 0,'resilience': 0,'magic': 0},
 
     "skills" : {},
 
     "learned skills" : {},
 
-    "inventory" : []
+    "inventory" : [],
+
+    "level": 0,
+
+    "skill points": 0
 }
 
 character_index = {

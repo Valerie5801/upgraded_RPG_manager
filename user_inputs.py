@@ -13,7 +13,7 @@ def input_inventory(inventory):
         for item in inventory:
             print(item)
 
-        add_rem_choice = choice_input(["add", "remove", "done"], 'Do you want to add or remove an item?(add/remove, "done" to exit. Write it in lowercase): ')
+        add_rem_choice = choice_input(["add", "remove", "done"], 'Do you want to add or remove an item? (add/remove/done)\n> ')
         match add_rem_choice:
             case "add":
                 if len(inventory) >= 10:
@@ -23,6 +23,9 @@ def input_inventory(inventory):
                     print(f"{add_item.capitalize()} successfully added to inventory.")
                     inventory.append(add_item)
             case "remove":
+                if not inventory:
+                    print('No item to remove!')
+                    continue
                 remove_item = choice_input(inventory, "Type the item you want to remove from this inventory: ")
                 print(f"{remove_item.capitalize()} successfully removed from inventory.")
                 inventory.remove(remove_item)
@@ -58,9 +61,3 @@ def input_create_char():
     #break out of the while true loop once user says they're done
     print(f"Type the level of {new_name}:")
     new_char_lvl = int_input()
-
-print("Testing inventory management inputs.\n")
-final_inventory = input_inventory(exist_inventory)  #variables like these only exist for the code to be testable
-
-print("\nTesting Character Creation inputs.\n")
-input_create_char()
