@@ -8,7 +8,7 @@ example_learned_skills = set()
 character_index = {'example': {
     "key info" : ('orc','wizard'), #race and class
 
-    "stats" : {'strength': 0,'dexterity': 0,'resilience': 0,'magic': 0},
+    "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
 
     "skills" : {},
 
