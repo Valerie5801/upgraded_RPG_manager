@@ -19,4 +19,3 @@ def choice_input(choices,prompt = '> '):
             return choice
         else:
             print('Please select a valid choice!')
-int_input()

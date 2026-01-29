@@ -9,10 +9,13 @@ def search(character_index):
             potentials.append(name)
         elif query in str(char['level']):
             potentials.append(name)
-        elif query in char['race']:
+        elif query in char['key info'][0]:
             potentials.append(name)
-        elif query in char['class']:
+        elif query in char['key info'][1]:
             potentials.append(name)
+    if not potentials:
+        print("No characters match search! Using example character.")
+        return 'example'
     index = 0
     for char in potentials:
         index += 1
