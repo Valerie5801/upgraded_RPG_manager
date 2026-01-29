@@ -48,8 +48,67 @@ def statBlock(character, character_indx):
     stats_to_be_used = statGen()
     while True:
         print("\n\nYou are currently picking for strength\n")
-        choice = input(f"Press 1 if you would like your strength to be{stats_to_be_used[0]}\nPress 2 if you would like your strength to be{stats_to_be_used[1]}\nPress 3 if you would like your strength to be{stats_to_be_used[2]}\nPress 4 if you would like your strength to be{stats_to_be_used[3]}")
-        if choice
+        choice = input(f"Press 1 if you would like your strength to be{stats_to_be_used[0]}\nPress 2 if you would like your strength to be{stats_to_be_used[1]}\nPress 3 if you would like your strength to be{stats_to_be_used[2]}\nPress 4 if you would like your strength to be{stats_to_be_used[3]}\n")
+        match choice:
+            case "1":
+                strength = stats_to_be_used[0]
+                stats_to_be_used.remove(stats_to_be_used[0])
+                break
+            case "2":
+                strength = stats_to_be_used[1]
+                stats_to_be_used.remove(stats_to_be_used[1])
+                break
+            case "3":
+                strength = stats_to_be_used[2]
+                stats_to_be_used.remove(stats_to_be_used[2])
+                break
+            case "4":
+                strength = stats_to_be_used[3]
+                stats_to_be_used.remove(stats_to_be_used[3])
+                break
+            case _:
+                pass
 
+    while True:
+        print("\n\nYou are currently picking for dexterity\n")
+        choice = input(f"Press 1 if you would like your strength to be{stats_to_be_used[0]}\nPress 2 if you would like your strength to be{stats_to_be_used[1]}\nPress 3 if you would like your strength to be{stats_to_be_used[2]}\n")
+        match choice:
+            case "1":
+                dexterity = stats_to_be_used[0]
+                stats_to_be_used.remove(stats_to_be_used[0])
+                break
+            case "2":
+                dexterity = stats_to_be_used[1]
+                stats_to_be_used.remove(stats_to_be_used[1])
+                break
+            case "3":
+                dexterity = stats_to_be_used[2]
+                stats_to_be_used.remove(stats_to_be_used[2])
+                break
+            case _:
+                pass
+
+    while True:
+        print("\n\nYou are currently picking for ressiliance\n")
+        choice = input(f"Press 1 if you would like your strength to be{stats_to_be_used[0]}\nPress 2 if you would like your strength to be{stats_to_be_used[1]}\n")
+        match choice:
+            case "1":
+                ressiliance = stats_to_be_used[0]
+                stats_to_be_used.remove(stats_to_be_used[0])
+                break
+            case "2":
+                ressiliance = stats_to_be_used[1]
+                stats_to_be_used.remove(stats_to_be_used[1])
+                break
+            case _:
+                pass
+
+    print(f"your magic stat is: {stats_to_be_used[0]}")
+    magic = stats_to_be_used[0]
+    strength += races[character_index[character]['race']][0]
+    dexterity += races[character_index[character]['race']][1]
+    ressiliance += races[character_index[character]['race']][2]
+    magic += races[character_index[character]['race']][3]
+    return (strength, dexterity, ressiliance, magic)
         
 
