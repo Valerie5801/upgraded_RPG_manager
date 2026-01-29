@@ -10,15 +10,15 @@ character_index = {'example': {
 
     "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
 
-    "skills" : {},
+    "skills" : {'attack magic': 0,'buff magic': 0},
 
     "learned skills" : example_learned_skills,
 
     "inventory" : [],
 
-    "level": 0,
+    "level": 1,
 
-    "skill points": 0
+    "skill points": 3
 }}
 def main_menu():
     def get_character():

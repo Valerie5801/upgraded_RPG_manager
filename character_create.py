@@ -38,9 +38,9 @@ def character_create(character_index):
         else:
             print("You already have a character with that name. Please try again.")
             continue
-    print(f"Here are the available races: {races}")
+    print(f"Here are the available races: {', '.join(races)}")
     raceinput = choice_input(races,f"What is {name.capitalize()}'s race?: ")
-    print(f"Here are the available classes: {classes}")
+    print(f"Here are the available classes: {', '.join(classes)}")
     class_choice = choice_input(classes,f"What is {name.capitalize()}'s class?: ")
     character_index[name]['key info'] = (raceinput,class_choice)
     character_index[name]['skills'] = {}
