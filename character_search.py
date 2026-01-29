@@ -13,6 +13,8 @@ def search(character_index):
             potentials.append(name)
         elif query in char['key info'][1]:
             potentials.append(name)
+    if 'example' in potentials:
+        potentials.remove('example')
     if not potentials:
         print("No characters match search! Using example character.")
         return 'example'
