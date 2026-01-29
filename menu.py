@@ -30,7 +30,7 @@ def main_menu():
     while True:
         print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Exit the Program(This will wipe all data!)")
         user_choice = choice_input(['1','2','3','4'],"Type the number that corresponds with the action that you want to perform: ")
-        
+        print("")
         match user_choice:
             case "1":
                 character_create(character_index)
