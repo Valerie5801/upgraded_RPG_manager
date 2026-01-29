@@ -9,25 +9,26 @@ exist_inventory = ["potion", "sword", "shield"]
 #Inputs for Inventory.
 def input_inventory(inventory):
     while True:
-        print("Here's the items in your inventory:")
-        for item in inventory:
-            print(item)
+        if inventory:
+            print("Here's the items in your character's inventory:")
+            for item in inventory:
+                print(item)
 
-        add_rem_choice = choice_input(["add", "remove", "done"], 'Do you want to add or remove an item? (add/remove/done)\n> ')
+        add_rem_choice = choice_input(["add", "remove", "done"], '\nDo you want to add or remove an item from the inventory? (add/remove/done)\n> ')
         match add_rem_choice:
             case "add":
                 if len(inventory) >= 10:
                     print("Sorry, the inventory is full.")
                 else:
                     add_item = u_input("Type the item you want to add to this inventory: ")
-                    print(f"{add_item.capitalize()} successfully added to inventory.")
+                    print(f"{add_item.capitalize()} successfully added to inventory.\n")
                     inventory.append(add_item)
             case "remove":
                 if not inventory:
                     print('No item to remove!')
                     continue
                 remove_item = choice_input(inventory, "Type the item you want to remove from this inventory: ")
-                print(f"{remove_item.capitalize()} successfully removed from inventory.")
+                print(f"{remove_item.capitalize()} successfully removed from inventory.\n")
                 inventory.remove(remove_item)
             case "done":
                 break
