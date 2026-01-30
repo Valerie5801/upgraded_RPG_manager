@@ -9,7 +9,32 @@ races = ['human', 'orc', 'elf', 'dwarf']
 classes = ['cleric', 'wizard', 'fighter', 'rogue']
 racial_bonuses = {
     'human': {
-        'strength': 1
+        'strength': 1,
+        'dexterity': 1,
+        'resilience': 1,
+        'magic': 1,
+        'skills': set()
+    },
+    'orc': {
+        'strength': 2,
+        'dexterity': 0,
+        'resilience': 1,
+        'magic': 0,
+        'skills': {'physical attack'}
+    },
+    'elf': {
+        'strength': 0,
+        'dexterity': 2,
+        'resilience': 0,
+        'magic': 1,
+        'skills': {'buff magic'}
+    },
+    'dwarf': {
+        'strength': 1,
+        'dexterity': 0,
+        'resilience': 2,
+        'magic': 0,
+        'skills': {'defense boost'}
     }
 }
 
@@ -71,10 +96,21 @@ def character_create(character_index):
     remaining = {'strength','dexterity','magic','resilience'}
     for stat in stat_list:
         display_remaining = ', '.join([i.title() for i in remaining])
-        print(f'What stat do you want the value {stat} to be? ({display_remaining})')
-        to_place = choice_input(remaining)
+        if len(remaining) > 1:
+            print(f'What stat do you want the value {stat} to be? ({display_remaining})')
+            to_place = choice_input(remaining)
+        else:
+            print(f'Assigned {stat} to {display_remaining}')
+            to_place = list(remaining)[0]
         character_index[name]['stats'][to_place] = stat
         remaining.remove(to_place)
+    for i in character_index[name]['stats'].keys():
+        character_index[name]['stats'][i] += racial_bonuses[raceinput][i]
+    for skill in racial_bonuses[raceinput]['skills']:
+        if not skill in character_index[name]['learned skills']:
+            character_index[name]['learned skills'].add(skill)
+            character_index[name]['skills'][skill] = 0
+        character_index[name]['skills'][skill] += 1
     print('\nHere are your final stats:')
     for stat in character_index[name]['stats']:
         print(f'{stat}: {character_index[name]['stats'][stat]}')
