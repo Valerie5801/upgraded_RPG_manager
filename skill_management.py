@@ -12,7 +12,7 @@ def level_up(character):
             character['learned skills'].add(skill)
     for i in range(lvl['abilities']):
         print('What ability do you want to increase? (strength, dexterity, resilience, magic)')
-        choice = choice_input()
+        choice = choice_input(['stength','dexterity','resilience','magic'])
         character['stats'][choice] += 1
     if character['skill points'] > 0:
         character = skill_allocation(character)
