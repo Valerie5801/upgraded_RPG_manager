@@ -1,6 +1,6 @@
 def u_input(prompt = '> '):
     return input(prompt).lower().strip()
-def int_input(max = 100000,prompt='> '):
+def int_input(max = 100000,prompt='> ',min = 0):
     while True:
         num = u_input(prompt)
         try:
@@ -8,10 +8,10 @@ def int_input(max = 100000,prompt='> '):
         except:
             print('Input is not a number!')
             continue
-        if num <= max:
+        if num <= max and num >= min:
             return num
         else:
-            print('Input is too high!')
+            print('Input is out of range!')
 def choice_input(choices,prompt = '> '):
     while True:
         choice = u_input(prompt)
