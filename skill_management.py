@@ -1,5 +1,5 @@
 from level_info import class_info
-from helper import choice_input
+from helper import choice_input, int_input
 def level_up(character):
     char_class = character['key info'][1]
     character['level'] += 1
@@ -19,15 +19,16 @@ def level_up(character):
     return character
 
 def skill_allocation(character):
-    for i in range(character['skill points']):
+    while character['skill points'] > 0:
         print(f'\nYou have {character['skill points']} skill points to spend.')
         print('Assign skill point where?: ')
         for i in character['skills'].keys():
             print(f'\t{i.capitalize()}: {character['skills'][i]}')
         chosen_skill = choice_input(character['skills'].keys())
-        character['skills'][chosen_skill] += 1
-        print(f'Added one skill point to {chosen_skill}.\n')
-        character['skill points'] -= 1
+        put_in = int_input(character['skill points'], 'How many skill points would you like to input? ', 0)
+        character['skills'][chosen_skill] += put_in
+        print(f'Added {put_in} skill point to {chosen_skill}.\n')
+        character['skill points'] -= put_in
     return character
 
 def skill_reset(character):
