@@ -75,7 +75,8 @@ def main_menu():
                 break
             case _:
                 print("That isn't an option, please try again.")
-
+        input('Press ENTER to continue > ')
+        print("\033c", end="")
 print("This is an RPG Character Manager.")
 main_menu()
 print("Thank you for using the Character Manager.")
