@@ -13,8 +13,10 @@ def input_inventory(inventory):
             print("\nHere's the items in your character's inventory:")
             for item in inventory:
                 print(item)
+        else:
+            print("This character has no items in their inventory.")
 
-        add_rem_choice = choice_input(["add", "remove", "done"], '\nDo you want to add or remove an item from the inventory? (add/remove/done)\n> ')
+        add_rem_choice = choice_input(["add", "remove", "done"], '\nDo you want to add or remove an item from their inventory? (add/remove/done)\n> ')
         match add_rem_choice:
             case "add":
                 if len(inventory) >= 10:
