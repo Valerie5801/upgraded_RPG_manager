@@ -4,6 +4,11 @@ from character_search import search
 from user_inputs import input_inventory
 from character_create import character_create
 from skill_management import level_up, skill_allocation, skill_reset
+from dice import die
+
+
+
+
 example_learned_skills = set()
 character_index = {'example': {
     "key info" : ('orc','wizard'), #race and class
