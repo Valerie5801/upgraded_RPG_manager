@@ -7,7 +7,11 @@ from skill_management import level_up
 character_index = {}
 races = ['human', 'orc', 'elf', 'dwarf']
 classes = ['cleric', 'wizard', 'fighter', 'rogue']
-
+racial_bonuses = {
+    'human': {
+        'strength': 1
+    }
+}
 
 def character_create(character_index):
 
