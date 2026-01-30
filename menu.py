@@ -4,7 +4,7 @@ from character_search import search
 from user_inputs import input_inventory
 from character_create import character_create
 from skill_management import level_up, skill_allocation, skill_reset
-from dice import die
+from dice import rolling
 
 
 
@@ -33,12 +33,13 @@ def main_menu():
         character = search(character_index)
         return character_index[character]
     while True:
-        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Exit the Program(This will wipe all data!)")
-        user_choice = choice_input(['1','2','3','4'],"Type the number that corresponds with the action that you want to perform: ")
+        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Roll some dice\n5. Exit the Program(This will wipe all data!)")
+        user_choice = choice_input(['1','2','3','4','5'],"Type the number that corresponds with the action that you want to perform: ")
         print("")
         match user_choice:
             case "1":
                 character_create(character_index)
+                
             case "2":
                 character = get_character()
                 print('You can: \n1. Edit Inventory\n2. Level Up\n3. Allocate Skill Points\n4. Reset Skill Points')
@@ -55,6 +56,7 @@ def main_menu():
                         character = skill_allocation(character)
                     case _:
                         print("An error ocurred. Please try again.")
+
             case "3":
                 character = get_character()
                 print(f'\nRace: {character['key info'][0]}')
@@ -72,6 +74,9 @@ def main_menu():
                 print(f'Skill Points: {character['skill points']}')
 
             case "4":
+                rolling()
+
+            case '5':
                 break
             case _:
                 print("That isn't an option, please try again.")
