@@ -56,6 +56,6 @@ def rolling():
 
     rolled(die_pick)
 
-rolling()
+
     
     

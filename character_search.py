@@ -15,6 +15,8 @@ def search(character_index):
             potentials.append(name)
     if 'example' in potentials:
         potentials.remove('example')
+    if query in potentials:
+        return query
     if not potentials:
         print("No characters match search! Using example character.")
         return 'example'
