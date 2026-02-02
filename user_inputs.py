@@ -6,9 +6,11 @@ from helper import int_input
 #Placeholder list for the conditionals to work. Edit this or any of the input and variables involved in order to make it work with the rest of the code if needed.
 exist_inventory = ["potion", "sword", "shield"]
 
-#Inputs for Inventory.
+#Inputs for Inventory
 def input_inventory(inventory):
+    #forever
     while True:
+        #display inventory
         if inventory:
             print("\nHere's the items in your character's inventory:")
             for item in inventory:
@@ -16,26 +18,30 @@ def input_inventory(inventory):
         else:
             print("This character has no items in their inventory.")
 
+        #get choice on what to do
         add_rem_choice = choice_input(["add", "remove", "done"], '\nDo you want to add or remove an item from their inventory? (add/remove/done)\n> ')
         match add_rem_choice:
-            case "add":
+            case "add": #add to inventory
                 if len(inventory) >= 10:
                     print("Sorry, the inventory is full.")
                 else:
                     add_item = u_input("Type the item you want to add to this inventory: ")
                     print(f"{add_item.capitalize()} successfully added to inventory.\n")
                     inventory.append(add_item)
-            case "remove":
+            case "remove": #remove from inventory
                 if not inventory:
                     print('No item to remove!')
                     continue
                 remove_item = choice_input(inventory, "Type the item you want to remove from this inventory: ")
                 print(f"{remove_item.capitalize()} successfully removed from inventory.\n")
                 inventory.remove(remove_item)
-            case "done":
+            case "done": #exit inventory management
                 break
     return inventory
 
+
+
+#this is all unused code
 
 #Inputs for Character Creation. I don't know if this needs parameters.
 def input_create_char():

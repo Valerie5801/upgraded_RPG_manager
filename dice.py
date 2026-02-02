@@ -4,6 +4,7 @@ from helper import u_input, choice_input, int_input
 
 import random
 
+#function for creating new die
 def die(sides):
     def amountRolled(ammount):
         dice = []
@@ -14,7 +15,9 @@ def die(sides):
     
     return amountRolled
 
+#dice rolling function
 def rolling():
+    #create all functions
     d4 = die(4)
     d6 = die(6)
     d8 = die(8)
@@ -23,18 +26,21 @@ def rolling():
     d12 = die(12)
     d20 = die(20)
 
-
+    #roll dice
     def rolled(die):
-
+        
+        #show rolled dice
         def showing(already_rolled):
+            counter = 0
             for i in already_rolled:
-                print(f"one die rolled a {i}")
+                counter += 1
+                print(f"Die {counter}: {i}")
 
-            print(f"all dice added together is {sum(already_rolled)}")
+            print(f"Sum: {sum(already_rolled)}")
 
 
-
-        sides = int_input(1000000000000, "how many dice are you rolling?\n Input here:")
+        #ask for how many dice to roll
+        sides = int_input(1000000000000, "How many dice are you rolling?\n> ")
         if die == '1':
             showing(d4(sides))
         elif die == '2':
@@ -51,8 +57,8 @@ def rolling():
             showing(d20(sides))
 
 
-
-    die_pick = choice_input(['1','2','3','4','5','6','7'], f"Press 1 if you would like to roll a D4 (die with four sides)\nPress 2 if you would like to use a D6 (die with 6 sides)\nPress 3 if you would like to use a D8 (die with 8 sides)\nPress 4 to use a D10 (die with 10 sides)\nPress 5 to use the Percentile die (die with 100 sides)\nPress 6 for the D12 (die with 12 sides)\nPress 7 for a D20 (die with 20 sides)\n Input here: ")
+    #ask what dice to roll
+    die_pick = choice_input(['1','2','3','4','5','6','7'], f"What die would you like to roll? \n1. D4\n2. D6\n3. D8\n4. D10\n5. Percentile (1-100)\n6. D12\n7. D20\n> ")
 
     rolled(die_pick)
 
