@@ -1,10 +1,14 @@
 #MW_CP2 dictionary of characters
+
+#import functions
 from helper import u_input
 from helper import int_input
 from helper import choice_input
 
 import random
 
+
+#example character
 character_base = {
     "key info" : ('orc','wizard'), #race and class
 
@@ -35,6 +39,7 @@ races = {
     "orc" : (2,-1,3,0)
 }
 
+#mostly unused code here
 def statGen():
 
         def roll():

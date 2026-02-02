@@ -3,7 +3,7 @@ import random
 from helper import u_input, choice_input, int_input
 from user_inputs import input_inventory
 from skill_management import level_up
-
+#data
 character_index = {}
 races = ['human', 'orc', 'elf', 'dwarf']
 classes = ['cleric', 'wizard', 'fighter', 'rogue']
@@ -38,10 +38,12 @@ racial_bonuses = {
     }
 }
 
+#character creation
 def character_create(character_index):
-
+    #stat generation
     def stat_gen():
 
+        #generate stats
         def roll():
             dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6),random.randint(1,6)]
             dice.remove(min(dice))
@@ -58,7 +60,7 @@ def character_create(character_index):
         
     
         
-    
+    #get character name
     while 14:
         name = u_input("What is your character's name?: ")
         if not name in character_index.keys():
@@ -67,32 +69,42 @@ def character_create(character_index):
         else:
             print("You already have a character with that name. Please try again.")
             continue
+    
+    #get character race
     print(f"Here are the available races: {', '.join(races)}")
     raceinput = choice_input(races,f"What is {name.capitalize()}'s race?: ")
+
+    #get character class
     print(f"Here are the available classes: {', '.join(classes)}")
     class_choice = choice_input(classes,f"What is {name.capitalize()}'s class?: ")
+
+    #create character dictionary
     character_index[name]['key info'] = (raceinput,class_choice)
     character_index[name]['skills'] = {}
     character_index[name]['level'] = 0
     character_index[name]['skill points'] = 0
-
     character_index[name]['learned skills'] = set()
+
+    #get initial inventory
     print(f"\nSetting {name.capitalize()}'s inventory...")
     character_index[name]['inventory'] = input_inventory([])
     character_index[name]['stats'] = {}
+
+    #get initial stats
     print(f"\nSetting {name.capitalize()}'s stats...")
     print("You can: \n1. Use generated stats \n2. Set your own stats")
     uinput = choice_input(['1', '2'], "What do you want to do?(1/2): ")
     match uinput:
-        case '1':
+        case '1': #generate stats
             stat_list = stat_gen()
             print('Generated Stats!')
             for i in stat_list: print(i)
-        case '2':
+        case '2': #get stat inputs (max 20)
             stat_list = []
             for i in range(4):
                 stat_list.append(int_input(20,f'stat {i+1}: '))
     
+    #ask where to assign stat values
     remaining = {'strength','dexterity','magic','resilience'}
     for stat in stat_list:
         display_remaining = ', '.join([i.title() for i in remaining])
@@ -104,13 +116,19 @@ def character_create(character_index):
             to_place = list(remaining)[0]
         character_index[name]['stats'][to_place] = stat
         remaining.remove(to_place)
+
+    #add racial stat bonuses
     for i in character_index[name]['stats'].keys():
         character_index[name]['stats'][i] += racial_bonuses[raceinput][i]
+
+    #add racial learned skills
     for skill in racial_bonuses[raceinput]['skills']:
         if not skill in character_index[name]['learned skills']:
             character_index[name]['learned skills'].add(skill)
             character_index[name]['skills'][skill] = 0
         character_index[name]['skills'][skill] += 1
+
+    #display final stats
     print('\nHere are your final stats:')
     for stat in character_index[name]['stats']:
         print(f'{stat}: {character_index[name]['stats'][stat]}')

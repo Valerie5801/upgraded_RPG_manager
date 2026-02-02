@@ -1,3 +1,5 @@
+#level info dictionary, structered class -> level -> skills learned/skill points gained/ability increases gained
+
 levels = {
     "cleric": {
         "1": {
