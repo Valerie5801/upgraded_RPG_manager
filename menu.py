@@ -96,8 +96,3 @@ def main_menu():
         #clear screen
         input('Press ENTER to continue > ')
         print("\033c", end="")
-
-#run main function
-print("This is an RPG Character Manager.")
-main_menu()
-print("Thank you for using the Character Manager.")
