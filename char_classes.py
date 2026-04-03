@@ -1,29 +1,31 @@
 #VY 2nd classes for upgraded rpg manager
-
+from helper import choice_input
 
 #DataVizualization class (use Matplotlib and/or Pandas)
-
+class DataVizualization:
+    pass
 
 #StatisticalAnalyzer class (use Matplotlib)
-
+class Statisticalanalyzer:
+    pass
 
 #RandomGenerator class (use Faker)
-
+class RandomGenerator:
+    pass
 
 #Characters class (parent class)
-
+class ExistCharacters:
+    pass
 
 #Character class (for character creation and character object management)
 class Character:
-    def __init__(self, char_info, race, role, inventory=None):  #using "role" as a substitute word for "class"
-        self.char_info = char_info  #when a character is created, char_info should be a dictionary with keys "name", "description", "backstory", and "persona_traits"
+    def __init__(self, name, race, role, backstory):  #using "role" as a substitute word for "class"
+        self.name = name.capitalize()
         self.level = 1  #level should stay 1 since it's a new character
         self.race = race.strip().lower()
         self.role = role.strip().lower()
-        if inventory:
-            self.inventory = inventory
-        else:
-            self.inventory = []
+        self.backstory = backstory
+        self.inventory = []
         #set all stats to 0
         self.stats = {
             'strength': 0,
@@ -69,15 +71,21 @@ class Character:
             }
             self.skills = {'defense boost'}
 
-        #give different skills based on class
-        if self.role == "cleric":
-            pass
-        elif self.role == "wizard":
-            pass
-        elif self.role == "fighter":
-            pass
-        elif self.role == "rogue":
-            pass
+
+    #method that sets skills based on race
+    def set_init_skills(self):
+        remaining = {'strength','dexterity','magic','resilience'}
+        for stat in self.stats.keys():
+            display_remaining = ', '.join([i.title() for i in remaining])
+            if len(remaining) > 1:
+                print(f'What stat do you want the value {stat} to be? ({display_remaining})')
+                to_place = choice_input(remaining)
+            else:
+                print(f'Assigned {stat} to {display_remaining}')
+                to_place = list(remaining)[0]
+            #ensure that the to_place value doesn't full on replace the existing stats (since they are racial bonuses before the main stats)
+            self.stats[to_place] += stat
+            remaining.remove(to_place)
 
 
     #method to level up
@@ -95,9 +103,18 @@ class Character:
         pass
 
 
-    #method to edit the inventory
-    def edit_inventory(self):
-        pass
+    #method to add an item to the inventory
+    def add_inventory(self, item):
+        self.inventory.append(item)
+
+
+    #method to remove an item to the inventory
+    def remove_inventory(self, item):
+        if item in self.inventory:
+            self.inventory.remove(item)
+            print(f"{item.capitalize()} successfully removed from inventory.\n")
+        else:
+            print(f"{item.capitalize()} not found.")
 
 
     #method to edit the personal information for the character (name, description, backstory, and persona_traits)
@@ -107,4 +124,8 @@ class Character:
 
     #method to print out the information of the character (will be used in the "view character" option of the menu)
     def __str__(self):
-        pass
+        print(f"Here is the information about {self.name}:")
+        print(f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\n")
+        print("Stats:")
+        for stat in self.stats.keys():
+            print(f'\t{stat}: {self.stats[stat]}')

@@ -1,6 +1,6 @@
 #MW_CP2 dictionary of characters
 
-#import functions
+"""#import functions
 from helper import u_input
 from helper import int_input
 from helper import choice_input
@@ -116,6 +116,6 @@ def statBlock(character, character_indx):
     dexterity += races[character_index[character]['race']][1]
     ressiliance += races[character_index[character]['race']][2]
     magic += races[character_index[character]['race']][3]
-    return (strength, dexterity, ressiliance, magic)
+    return (strength, dexterity, ressiliance, magic)"""
         
 
