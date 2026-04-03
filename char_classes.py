@@ -73,9 +73,9 @@ class Character:
 
 
     #method that sets skills based on race
-    def set_init_skills(self):
+    def set_init_skills(self, value_list):
         remaining = {'strength','dexterity','magic','resilience'}
-        for stat in self.stats.keys():
+        for stat in value_list:
             display_remaining = ', '.join([i.title() for i in remaining])
             if len(remaining) > 1:
                 print(f'What stat do you want the value {stat} to be? ({display_remaining})')
@@ -84,7 +84,7 @@ class Character:
                 print(f'Assigned {stat} to {display_remaining}')
                 to_place = list(remaining)[0]
             #ensure that the to_place value doesn't full on replace the existing stats (since they are racial bonuses before the main stats)
-            self.stats[to_place] += stat
+            self.stats[to_place] += int(stat)
             remaining.remove(to_place)
 
 
@@ -124,8 +124,8 @@ class Character:
 
     #method to print out the information of the character (will be used in the "view character" option of the menu)
     def __str__(self):
-        print(f"Here is the information about {self.name}:")
-        print(f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\n")
-        print("Stats:")
+        show_stats = ""
         for stat in self.stats.keys():
-            print(f'\t{stat}: {self.stats[stat]}')
+            show_stats += f'\t{stat}: {self.stats[stat]}\n'
+        show_info = f"Here is the information about {self.name}:" + f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\nStats:" + show_stats
+        return show_info

@@ -82,10 +82,12 @@ def character_create(character_index):
 
 
     #ask user if they want to make a backstory about their character.
-    ask_backstory = choice_input(["yes", "no"], f"Do you want to add a backstory for {name.capitalize()}?")
+    ask_backstory = choice_input(["yes", "no"], f"Do you want to add a backstory for {name.capitalize()}?: ")
     if ask_backstory == "yes":
         print(f"Type {name.capitalize()}'s backstory and press ENTER when done.")
         char_back = input("> ")
+    else:
+        char_back = ""
 
     #create character object using Character class
     """character_index[name]['key info'] = (raceinput,class_choice)
@@ -127,7 +129,7 @@ def character_create(character_index):
             to_place = list(remaining)[0]
         character_index[name]['stats'][to_place] = stat
         remaining.remove(to_place)"""
-    new_char.self_init_skills()
+    new_char.set_init_skills(stat_list)
 
     #add racial stat bonuses
     """for i in character_index[name]['stats'].keys():
@@ -142,8 +144,27 @@ def character_create(character_index):
 
     #display final stats
     print('\nHere are your final stats:')
-    for stat in character_index[name]['stats']:
+    """for stat in character_index[name]['stats']:
         print(f'{stat}: {character_index[name]['stats'][stat]}')
     character_index[name] = level_up(character_index[name])
-    print(f'{name.capitalize()} has been created!')
+    print(f'{name.capitalize()} has been created!')"""
+    print(new_char)
     return new_char
+
+demo = {'example': {
+    "key info" : ('orc','wizard'), #race and class
+
+    "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
+
+    "skills" : {'attack magic': 0,'buff magic': 0},
+
+    "learned skills" : set(),
+
+    "inventory" : [],
+
+    "level": 1,
+
+    "skill points": 3
+}}
+
+character_create(demo)
