@@ -15,7 +15,31 @@ class RandomGenerator:
 
 #Characters class (parent class)
 class ExistCharacters:
-    pass
+    def __init__(self, char_list = None):
+        if char_list:
+            self.char_list = char_list
+        else:
+            self.char_list = []
+
+    #method to add students
+    def add_char(self, student):
+        self.char_list.append(student)
+
+    #method to remove students
+    def remove_char(self, character):
+        if character in self.char_list:
+            self.char_list.remove(character)
+        else:
+            print("That character doesn't exist.")
+
+    #method to show all students
+    def show_chars(self):
+        for char in self.char_list:
+            print(char)
+
+    #method to return information
+    def save_info(self):
+        return self.char_list
 
 #Character class (for character creation and character object management)
 class Character:
@@ -120,6 +144,17 @@ class Character:
     #method to edit the personal information for the character (name, description, backstory, and persona_traits)
     def edit_info(self):
         pass
+
+
+    #method to return information as a dictionary
+    def return_info(self):
+        #make a dictionary with all the info
+        self.info = {'Name': self.name, 
+                    'Race': self.race, 
+                    'Class': self.role}
+        #add the grades to the info dictionary
+        self.info.update(self.stats)
+        return self.info
 
 
     #method to print out the information of the character (will be used in the "view character" option of the menu)

@@ -90,17 +90,10 @@ def character_create(character_index):
         char_back = ""
 
     #create character object using Character class
-    """character_index[name]['key info'] = (raceinput,class_choice)
-    character_index[name]['skills'] = {}
-    character_index[name]['level'] = 0
-    character_index[name]['skill points'] = 0
-    character_index[name]['learned skills'] = set()"""
     new_char = Character(name.capitalize(), race_input, class_choice, char_back)
 
     #get initial inventory. edited to work with the Character class
     print(f"\nSetting {new_char.name}'s inventory...")
-    """character_index[name]['inventory'] = input_inventory([])
-    character_index[name]['stats'] = {}"""
     input_inventory(new_char)
 
     #get initial stats
@@ -118,36 +111,10 @@ def character_create(character_index):
                 stat_list.append(int_input(20,f'stat {i+1}: '))
     
     #ask where to assign stat values. moved this code over to the class and made it a method.
-    """remaining = {'strength','dexterity','magic','resilience'}
-    for stat in stat_list:
-        display_remaining = ', '.join([i.title() for i in remaining])
-        if len(remaining) > 1:
-            print(f'What stat do you want the value {stat} to be? ({display_remaining})')
-            to_place = choice_input(remaining)
-        else:
-            print(f'Assigned {stat} to {display_remaining}')
-            to_place = list(remaining)[0]
-        character_index[name]['stats'][to_place] = stat
-        remaining.remove(to_place)"""
     new_char.set_init_skills(stat_list)
-
-    #add racial stat bonuses
-    """for i in character_index[name]['stats'].keys():
-        character_index[name]['stats'][i] += racial_bonuses[race_input][i]"""
-
-    #add racial learned skills
-    """for skill in racial_bonuses[race_input]['skills']:
-        if not skill in character_index[name]['learned skills']:
-            character_index[name]['learned skills'].add(skill)
-            character_index[name]['skills'][skill] = 0
-        character_index[name]['skills'][skill] += 1"""
 
     #display final stats
     print('\nHere are your final stats:')
-    """for stat in character_index[name]['stats']:
-        print(f'{stat}: {character_index[name]['stats'][stat]}')
-    character_index[name] = level_up(character_index[name])
-    print(f'{name.capitalize()} has been created!')"""
     print(new_char)
     return new_char
 
