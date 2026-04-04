@@ -55,7 +55,7 @@ def main_menu():
                 edit_choice = choice_input(['1','2','3'], "What would you like to do? (1/2/3): ")
                 match edit_choice:
                     case "1": #inventory management
-                        character['inventory'] = input_inventory(character['inventory'])
+                        character = input_inventory(character)
                     case "2": #level up
                         character = level_up(character)
                     case "3": #skill reset

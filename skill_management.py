@@ -4,12 +4,12 @@ from helper import choice_input, int_input
 #level up function
 def level_up(character):
     #get character class
-    char_class = character['key info'][1]
-    if character['level'] < 10:
+    char_class = character.role
+    if character.level < 10:
         #increase character level
-        character['level'] += 1
+        character.level += 1
         #retrieve level info
-        char_lvl = character['level']
+        char_lvl = character.level
         lvl = class_info(char_class,char_lvl)
         #add skill points
         character['skill points'] += lvl['skill points']
