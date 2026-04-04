@@ -1,5 +1,6 @@
 from level_info import class_info
 from helper import choice_input, int_input
+from char_classes import Character
 
 #level up function
 def level_up(character):
@@ -12,17 +13,17 @@ def level_up(character):
         char_lvl = character.level
         lvl = class_info(char_class,char_lvl)
         #add skill points
-        character['skill points'] += lvl['skill points']
+        character.skill_points += lvl['skill points']
         #add new learned skills
         for skill in lvl['skills']:
-            if not skill in character['learned skills']:
-                character['skills'][skill] = 0
-                character['learned skills'].add(skill)
+            if not skill in character.skills:
+                character.skills[skill] = 0
+                character.skills.add(skill)
         #add ability increases
         for i in range(lvl['abilities']):
             print('What ability do you want to increase? (strength, dexterity, resilience, magic)')
             choice = choice_input(['stength','dexterity','resilience','magic'])
-            character['stats'][choice] += 1
+            character.stats[choice] += 1
         #run skill allocation
         if character['skill points'] > 0:
             character = skill_allocation(character)

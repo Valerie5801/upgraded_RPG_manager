@@ -55,10 +55,10 @@ class Character:
             'strength': 0,
             'dexterity': 0,
             'resilience': 0,
-            'magic': 0
+            'magic': 0,
         }
         #empty set for skills
-        self.skills = set()
+        self.skills = dict()
         #automatically gives three skill points
         self.skill_points = 3
 
@@ -77,7 +77,7 @@ class Character:
                 'resilience': 1,
                 'magic': 0
             }
-            self.skills = {'physical attack'}
+            self.skills = {'physical attack': 0}
         elif self.race == "elf":
             self.stats = {
                 'strength': 0,
@@ -85,7 +85,7 @@ class Character:
                 'resilience': 0,
                 'magic': 1,
             }
-            self.skills = {'buff magic'}
+            self.skills = {'buff magic': 0}
         elif self.race == "dwarf":
             self.stats = {
                 'strength': 1,
@@ -93,11 +93,11 @@ class Character:
                 'resilience': 2,
                 'magic': 0
             }
-            self.skills = {'defense boost'}
+            self.skills = {'defense boost': 0}
 
 
     #method that sets skills based on race
-    def set_init_skills(self, value_list):
+    def split_skill_pts(self, value_list):
         remaining = {'strength','dexterity','magic','resilience'}
         for stat in value_list:
             display_remaining = ', '.join([i.title() for i in remaining])

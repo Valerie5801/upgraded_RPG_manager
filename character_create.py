@@ -111,7 +111,7 @@ def character_create(character_index):
                 stat_list.append(int_input(20,f'stat {i+1}: '))
     
     #ask where to assign stat values. moved this code over to the class and made it a method.
-    new_char.set_init_skills(stat_list)
+    new_char.split_skill_pts(stat_list)
 
     #display final stats
     print('\nHere are your final stats:')
