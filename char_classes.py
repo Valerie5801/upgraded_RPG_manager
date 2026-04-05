@@ -12,7 +12,12 @@ class Statisticalanalyzer:
 
 #RandomGenerator class (use Faker)
 class RandomGenerator:
-    pass
+    def __init__(self):
+        self.fake = Faker()
+        self.name = self.fake.name()
+        self.race = self.fake.random_element(elements=['human', 'orc', 'elf', 'dwarf'])
+        self.role = self.fake.random_element(elements=['cleric', 'wizard', 'fighter', 'rogue'])
+        self.backstory = self.fake.sentence(nb_words = 12)
 
 #Characters class (parent class)
 class ExistCharacters:
@@ -112,17 +117,7 @@ class Character:
             #ensure that the to_place value doesn't full on replace the existing stats (since they are racial bonuses before the main stats)
             self.stats[to_place] += int(stat)
             remaining.remove(to_place)
-
-
-    #method to level up
-    def level_up(self):
-        pass
-
-
-    #method to add a new skill/ability
-    def add_skill(self):
-        pass
-
+            
 
     #method to reset skill points
     def reset_skill_pts(self):

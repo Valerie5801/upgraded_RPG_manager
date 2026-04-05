@@ -3,7 +3,7 @@ import random
 from helper import u_input, choice_input, int_input
 from user_inputs import input_inventory
 from skill_management import level_up
-from char_classes import Character
+from char_classes import Character, RandomGenerator
 #data
 character_index = {}
 races = ['human', 'orc', 'elf', 'dwarf']
@@ -61,36 +61,49 @@ def character_create(character_index):
             return False
         
     
-        
+    name = ""
+    new_race = ""
+    class_choice = ""
+    char_back = ""
+
     #get character name
-    while True:
-        name = u_input("What is your character's name?: ")
-        if name not in character_index:
-            character_index[name] = new_char
-            break
-        else:
-            print("You already have a character with that name. Please try again.")
-            continue
+    print("Do you want to set the name, race, class, and backstory of your character or have it generated?")
+    print('Please type either "set" or "generate"')
+    set_or_gen = choice_input(["set", "generate"])
+    match set_or_gen:
+        case "set":
+            while True:
+                name = u_input("What is your character's name?: ").title().strip()
+                if name not in character_index:
+                    break
+                else:
+                    print("You already have a character with that name. Please try again.")
     
-    #get character race
-    print(f"Here are the available races: {', '.join(races)}")
-    race_input = choice_input(races,f"What is {name.capitalize()}'s race?: ")
+            #get character race
+            print(f"Here are the available races: {', '.join(races)}")
+            new_race = choice_input(races,f"What is {name.capitalize()}'s race?: ")
 
-    #get character class
-    print(f"Here are the available classes: {', '.join(classes)}")
-    class_choice = choice_input(classes,f"What is {name.capitalize()}'s class?: ")
+            #get character class
+            print(f"Here are the available classes: {', '.join(classes)}")
+            class_choice = choice_input(classes,f"What is {name.capitalize()}'s class?: ")
 
+            #ask user if they want to make a backstory about their character.
+            ask_backstory = choice_input(["yes", "no"], f"Do you want to add a backstory for {name.capitalize()}?: ")
+            if ask_backstory == "yes":
+                print(f"Type {name.capitalize()}'s backstory and press ENTER when done.")
+                char_back = input("> ")
+            else:
+                char_back = ""
 
-    #ask user if they want to make a backstory about their character.
-    ask_backstory = choice_input(["yes", "no"], f"Do you want to add a backstory for {name.capitalize()}?: ")
-    if ask_backstory == "yes":
-        print(f"Type {name.capitalize()}'s backstory and press ENTER when done.")
-        char_back = input("> ")
-    else:
-        char_back = ""
-
+        case "generate":
+            gen_info = RandomGenerator()
+            name = gen_info.name
+            new_race = gen_info.race
+            class_choice = gen_info.role
+            char_back = gen_info.backstory
+            
     #create character object using Character class
-    new_char = Character(name.capitalize(), race_input, class_choice, char_back)
+    new_char = Character(name.title(), new_race, class_choice, char_back)
 
     #get initial inventory. edited to work with the Character class
     print(f"\nSetting {new_char.name}'s inventory...")
