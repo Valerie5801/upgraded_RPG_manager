@@ -44,27 +44,26 @@ def save_csv():
                     row["Name"],
                     row["Race"],
                     row["Class"],
-                    row["Backstory"],
+                    row["Backstory"]
+                )
+
                     #add back numbers
-                    int(row["Level"]),
-                    int(row["Skill Points"]),
+                char.level = int(row["Level"])
+                char.skill_points = int(row["Skill Points"])
 
                     #add back the values that are lists and dictionaries
-                    json.loads(row["Stats"]),
-                    json.loads(row["Skills"]),
-                    json.loads(row["Inventory"])
-                )
+                char.stats = json.loads(row["Stats"])
+                char.skills = json.loads(row["Skills"])
+                char.inventory = json.loads(row["Inventory"])
 
                 #store in dictionary
                 character_index[char.name] = char
+            return character_index
 
     except FileNotFoundError:
         #tell the CSV doesn't exist and return an empty dict
         print("The CSV doesn't exist.")
         return {}
-    
-    else:
-        return character_index
     
 
 #function for rewriting the CSV again. This will be used every time the user makes a change to their library:
@@ -72,7 +71,7 @@ def rewrite_csv(characters):
     with open("docs/characters.csv", "w", newline='') as csvfile:
         writer = csv.writer(csvfile)   #read through list
         #write the header
-        writer.writerow(['Name','Race','Class','Level','Skill Points','Skills','Inventory','Description','Backstory','Personality Traits'])
+        writer.writerow(['Name','Race','Class','Backstory','Level','Skill Points','Stats','Skills','Inventory'])
         
         #loop through students
         for character in characters.values():
@@ -80,12 +79,12 @@ def rewrite_csv(characters):
                 character.name,
                 character.race,
                 character.role,
+                character.backstory,
                 character.level,
                 character.skill_points,
+                json.dumps(character.stats),
                 json.dumps(character.skills),
-                json.dumps(character.inventory),
-                character.backstory,
-                """json.dumps(character.personality_traits)"""
+                json.dumps(character.inventory)
             ]
             #write a row.
             writer.writerow(row)

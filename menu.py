@@ -1,7 +1,7 @@
 #VY 2nd Menu
 
 #Import all functions
-from helper import u_input, choice_input
+from helper import u_input, choice_input, rewrite_csv, save_csv
 from character_search import search
 from user_inputs import input_inventory
 from character_create import character_create
@@ -27,7 +27,12 @@ example_learned_skills = set()
 
     "skill points": 3
 }}"""
-character_index = {'example': Character('Example', 'orc', 'wizard', 'this is just an example character')}
+
+
+character_index = save_csv()
+#failsafe incase nothing is in the CSV
+if not character_index:
+    character_index = {'example': Character('Example', 'orc', 'wizard', 'this is just an example character')}
 #main menu function
 def main_menu():
     #get character function
@@ -41,7 +46,7 @@ def main_menu():
     #loop forever
     while True:
         #get user choice on what to do
-        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Roll some dice\n5. Exit the Program(This will wipe all data!)")
+        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Roll some dice\n5. Exit the Program")
         user_choice = choice_input(['1','2','3','4','5'],"Type the number that corresponds with the action that you want to perform: ")
         print("")
         match user_choice:
@@ -95,6 +100,8 @@ def main_menu():
             case _:
                 print("That isn't an option, please try again.")
         
+        rewrite_csv(character_index)
+
         #clear screen
         input('Press ENTER to continue > ')
         print("\033c", end="")
