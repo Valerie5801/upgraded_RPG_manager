@@ -88,3 +88,14 @@ def rewrite_csv(characters):
             ]
             #write a row.
             writer.writerow(row)
+
+
+#function for getting all characters' information into a list
+def get_chars_info(character_index):
+    data = []
+    #loop through the characters
+    for character in character_index.values():
+        #call the method to bring all the information together into a dictionary
+        data.append(character.return_info())
+    #return character information
+    return data

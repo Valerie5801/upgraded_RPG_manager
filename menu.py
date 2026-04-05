@@ -35,25 +35,28 @@ if not character_index:
     character_index = {'example': Character('Example', 'orc', 'wizard', 'this is just an example character')}
 #main menu function
 def main_menu():
+    characters = ExistCharacters(character_index)
+
     #get character function
     def get_character():
         #check if there is a character. If so, search characters. Else, tell them to make a character
-        if not character_index:
+        if not characters.chars:
             print("You must make a character first!")
-            character_create(character_index)
-        character = search(character_index)
-        return character_index[character]
+            new_char = character_create(characters.chars)
+            characters.add_char(new_char)
+        character = search(characters.chars)
+        return characters.chars[character]
     #loop forever
     while True:
         #get user choice on what to do
-        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Roll some dice\n5. Exit the Program")
-        user_choice = choice_input(['1','2','3','4','5'],"Type the number that corresponds with the action that you want to perform: ")
+        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Remove a Character\n5. Compare two Characters\n6. Roll some dice\n7. Exit the Program")
+        user_choice = choice_input(['1','2','3','4','5','6','7'],"Type the number that corresponds with the action that you want to perform: ")
         print("")
         match user_choice:
             #character creation
             case "1":
-                character_create(character_index)
-            
+                new_char = character_create(characters.chars)
+                characters.add_char(new_char)
             #character editing
             case "2":
                 character = get_character() #get character choice
@@ -73,34 +76,31 @@ def main_menu():
             #character viewing
             case "3":
                 character = get_character()
-                print(character)
-                """print(f'\nRace: {character['key info'][0]}') #race
-                print(f'Class: {character['key info'][1]}') #class
-                print('\nStats:')
-                for stat in character['stats']:
-                    print(f'{stat}: {character['stats'][stat]}') #stat
-                print('\nSkills:')
-                for skill in character['skills']:
-                    print(f'{skill}: {character['skills'][skill]}') #skill
-                print('\nInventory:')
-                for item in character['inventory']:
-                    print(item) #inventory item
-                print(f'Level: {character['level']}') #level
-                print(f'Skill Points: {character['skill points']}') #unspent skill points"""
+                print(character.name)
             
-            #dice rolling
+            #character removal
             case "4":
+                character = get_character()
+                characters.remove_char(character.name)
+                print(f"{character.name} has been removed.")
+
+            #character comparison
+            case "5":
+                pass
+
+            #dice rolling
+            case "6":
                 rolling()
             
             #exiting
-            case '5':
+            case "7":
                 break
 
             #error handling
             case _:
                 print("That isn't an option, please try again.")
         
-        rewrite_csv(character_index)
+        rewrite_csv(characters.chars)
 
         #clear screen
         input('Press ENTER to continue > ')
