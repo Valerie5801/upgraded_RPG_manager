@@ -15,31 +15,32 @@ class RandomGenerator:
 
 #Characters class (parent class)
 class ExistCharacters:
-    def __init__(self, char_list = None):
-        if char_list:
-            self.char_list = char_list
+    def __init__(self, chars = None):
+        if chars is not None:
+            self.chars = chars
         else:
-            self.char_list = []
+            self.chars = {}
 
-    #method to add students
+    #method to add characters
     def add_char(self, character):
-        self.char_list.append(character)
+        self.chars[character.name] = character
 
-    #method to remove students
-    def remove_char(self, character):
-        if character in self.char_list:
-            self.char_list.remove(character)
+    #method to remove characters
+    def remove_char(self, name):
+        if name in self.chars.keys():
+            del self.chars[name]
         else:
             print("That character doesn't exist.")
 
-    #method to show all students
+    #method to show all characters
     def show_chars(self):
-        for char in self.char_list:
+        for char in self.chars.values():
             print(char)
 
     #method to return information
     def save_info(self):
-        return self.char_list
+        return self.chars
+
 
 #Character class (for character creation and character object management)
 class Character:

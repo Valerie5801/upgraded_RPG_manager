@@ -63,9 +63,9 @@ def character_create(character_index):
     
         
     #get character name
-    while 14:
+    while True:
         name = u_input("What is your character's name?: ")
-        if not name in character_index.keys():
+        if name not in character_index:
             character_index[name] = new_char
             break
         else:
