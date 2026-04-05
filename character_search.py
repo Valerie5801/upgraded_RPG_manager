@@ -1,7 +1,6 @@
 from helper import u_input
 from helper import choice_input
 
-
 #character search
 def search(character_index):
     #get query
@@ -10,13 +9,13 @@ def search(character_index):
     #check for query in character names, levels, race, and class
     for name in character_index.keys():
         char = character_index[name]
-        if query in name:
+        if query == name:
             potentials.append(name)
-        elif query in str(char['level']):
+        elif query == str(char.level):
             potentials.append(name)
-        elif query in char['key info'][0]: #race
+        elif query == char.race: #race
             potentials.append(name)
-        elif query in char['key info'][1]: #class
+        elif query == char.role: #class
             potentials.append(name)
     #if it found the example character, remove it
     if 'example' in potentials:

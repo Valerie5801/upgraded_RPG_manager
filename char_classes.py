@@ -22,8 +22,8 @@ class ExistCharacters:
             self.char_list = []
 
     #method to add students
-    def add_char(self, student):
-        self.char_list.append(student)
+    def add_char(self, character):
+        self.char_list.append(character)
 
     #method to remove students
     def remove_char(self, character):
@@ -124,7 +124,10 @@ class Character:
 
     #method to reset skill points
     def reset_skill_pts(self):
-        pass
+        #reset skills and add those skill points to unspent
+        for i in self.skills.keys():
+            self.skill_points += self.skills[i]
+            self.skills[i] = 0
 
 
     #method to add an item to the inventory

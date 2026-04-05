@@ -7,12 +7,12 @@ from user_inputs import input_inventory
 from character_create import character_create
 from skill_management import level_up, skill_allocation, skill_reset
 from dice import rolling
-
+from char_classes import Character, ExistCharacters
 
 
 #create example character and character index
 example_learned_skills = set()
-character_index = {'example': {
+"""character_index = {'example': {
     "key info" : ('orc','wizard'), #race and class
 
     "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
@@ -26,7 +26,8 @@ character_index = {'example': {
     "level": 1,
 
     "skill points": 3
-}}
+}}"""
+character_index = {'example': Character('Example', 'orc', 'wizard', 'this is just an example character')}
 #main menu function
 def main_menu():
     #get character function
@@ -67,7 +68,8 @@ def main_menu():
             #character viewing
             case "3":
                 character = get_character()
-                print(f'\nRace: {character['key info'][0]}') #race
+                print(character)
+                """print(f'\nRace: {character['key info'][0]}') #race
                 print(f'Class: {character['key info'][1]}') #class
                 print('\nStats:')
                 for stat in character['stats']:
@@ -79,7 +81,7 @@ def main_menu():
                 for item in character['inventory']:
                     print(item) #inventory item
                 print(f'Level: {character['level']}') #level
-                print(f'Skill Points: {character['skill points']}') #unspent skill points
+                print(f'Skill Points: {character['skill points']}') #unspent skill points"""
             
             #dice rolling
             case "4":
