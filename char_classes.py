@@ -1,5 +1,6 @@
 #VY 2nd classes for upgraded rpg manager
 from helper import choice_input
+from faker import Faker
 
 #DataVizualization class (use Matplotlib and/or Pandas)
 class DataVizualization:
