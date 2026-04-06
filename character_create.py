@@ -132,21 +132,3 @@ def character_create(character_index):
     print('\nHere are your final stats:')
     print(new_char)
     return new_char
-
-"""demo = {'example': {
-    "key info" : ('orc','wizard'), #race and class
-
-    "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
-
-    "skills" : {'attack magic': 0,'buff magic': 0},
-
-    "learned skills" : set(),
-
-    "inventory" : [],
-
-    "level": 1,
-
-    "skill points": 3
-}}
-
-character_create(demo)"""
