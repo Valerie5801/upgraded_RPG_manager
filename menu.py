@@ -1,7 +1,8 @@
 #VY 2nd Menu
 
 #Import all functions
-from helper import u_input, choice_input, rewrite_csv, save_csv
+from helper import u_input, choice_input
+from csv_funcs import rewrite_csv, save_csv
 from character_search import search
 from user_inputs import input_inventory
 from character_create import character_create

@@ -1,1 +1,4 @@
 Name,Race,Class,Backstory,Level,Skill Points,Stats,Skills,Inventory
+Example,orc,wizard,this is just an example character,1,3,"{""strength"": 2, ""dexterity"": 0, ""resilience"": 1, ""magic"": 0}","{""physical attack"": 0}",[]
+Candace,dwarf,wizard,Drug half real person clear his foot quite around movie pressure store pattern action one game.,1,3,"{""strength"": 11, ""dexterity"": 9, ""resilience"": 11, ""magic"": 13}","{""defense boost"": 0}","[""berserker"", ""rifle"", ""knife""]"
+Alexis,dwarf,fighter,Catch boy figure again occur approach later take need movement hand pick edge.,1,3,"{""strength"": 9, ""dexterity"": 11, ""resilience"": 14, ""magic"": 12}","{""defense boost"": 0}",[]
