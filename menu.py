@@ -7,26 +7,7 @@ from user_inputs import input_inventory
 from character_create import character_create
 from skill_management import level_up, skill_allocation, skill_reset
 from dice import rolling
-from char_classes import Character, ExistCharacters
-
-
-#create example character and character index
-example_learned_skills = set()
-"""character_index = {'example': {
-    "key info" : ('orc','wizard'), #race and class
-
-    "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
-
-    "skills" : {'attack magic': 0,'buff magic': 0},
-
-    "learned skills" : example_learned_skills,
-
-    "inventory" : [],
-
-    "level": 1,
-
-    "skill points": 3
-}}"""
+from classes import Character, ExistCharacters, DataVizualization, StatisticalAnalyzer
 
 
 character_index = save_csv()
@@ -48,6 +29,7 @@ def main_menu():
         return characters.chars[character]
     #loop forever
     while True:
+        analytics = StatisticalAnalyzer(characters)
         #get user choice on what to do
         print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Remove a Character\n5. Compare two Characters\n6. Roll some dice\n7. Exit the Program")
         user_choice = choice_input(['1','2','3','4','5','6','7'],"Type the number that corresponds with the action that you want to perform: ")
@@ -60,8 +42,8 @@ def main_menu():
             #character editing
             case "2":
                 character = get_character() #get character choice
-                print('You can: \n1. Edit Inventory\n2. Level Up\n3. Reset Skill Points')
-                edit_choice = choice_input(['1','2','3'], "What would you like to do? (1/2/3): ")
+                print('You can: \n1. Edit Inventory\n2. Level Up\n3. Reset Skill Points\nChange the name/backstory')
+                edit_choice = choice_input(['1','2','3','4'], "What would you like to do? (1/2/3/4): ")
                 match edit_choice:
                     case "1": #inventory management
                         character = input_inventory(character)
@@ -70,13 +52,44 @@ def main_menu():
                     case "3": #skill reset
                         character = skill_reset(character)
                         character = skill_allocation(character)
+                    case "4":
+                        print('Type in "exit" if you want to back out.')
+                        choose_change = choice_input(['name', 'backstory', 'both', 'exit'], "What would you like to change?(name/backstory/both/exit): ")
+                        #preserve original values in case they don't change
+                        new_name = character.name
+                        new_backstory = character.backstory
+                        #ask for the values depending on what the user picked
+                        match choose_change:
+                            case 'name':
+                                new_name = u_input(f"What will be {character.name}'s new name?: ")
+                            case 'backstory':
+                                new_backstory = input(f"Type in the backstory for {character.name} and press ENTER when done: ")
+                            case 'both':
+                                new_name = u_input(f"What will be {character.name}'s new name?: ")
+                                new_backstory = input(f"Type in the backstory for {character.name} and press ENTER when done: ")
+                            case 'exit':
+                                continue
+                        character.edit_info(new_name, new_backstory)
+                            
                     case _:
                         print("An error ocurred. Please try again.")
 
             #character viewing
             case "3":
                 character = get_character()
-                print(character.name)
+                print(character)
+                ask_view_graph = choice_input(["yes", "no"], "Do you want to see this character's stats on a graph?: ")
+                match ask_view_graph:
+                    case "yes":
+                        graph = DataVizualization(analytics.df)
+                        ask_type_graph = choice_input(["radar", "bar"], "Do you want a bar or radar graph?: ")
+                        match ask_type_graph:
+                            case "radar":
+                                graph.radar_chart(character.name)
+                            case "bar":
+                                graph.bar_stat(character.name)
+                    case "no":
+                        continue
             
             #character removal
             case "4":
@@ -86,7 +99,17 @@ def main_menu():
 
             #character comparison
             case "5":
-                pass
+                graph = DataVizualization(analytics.df)
+                print("Select the first character for comparison.")
+                first_char = get_character()
+                print("Select the second character for comparison.")
+                second_char = get_character()
+
+                selected_chars = [first_char.name, second_char.name]
+                print("Type in either strength, dexterity, resilience, or magic")
+                chosen_stat = choice_input(['strength', 'dexterity', 'resilience', 'magic'], "What stat do you want to compare?: ")
+
+                graph.compare_stat(chosen_stat, selected_chars)
 
             #dice rolling
             case "6":

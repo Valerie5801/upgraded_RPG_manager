@@ -3,7 +3,7 @@ import random
 from helper import u_input, choice_input, int_input
 from user_inputs import input_inventory
 from skill_management import level_up
-from char_classes import Character, RandomGenerator
+from classes import Character, RandomGenerator
 #data
 character_index = {}
 races = ['human', 'orc', 'elf', 'dwarf']
@@ -93,7 +93,7 @@ def character_create(character_index):
                 print(f"Type {name.capitalize()}'s backstory and press ENTER when done.")
                 char_back = input("> ")
             else:
-                char_back = ""
+                char_back = "No backstory here yet!"
 
         case "generate":
             gen_info = RandomGenerator()
@@ -131,7 +131,7 @@ def character_create(character_index):
     print(new_char)
     return new_char
 
-demo = {'example': {
+"""demo = {'example': {
     "key info" : ('orc','wizard'), #race and class
 
     "stats" : {'strength': 11,'dexterity': 11,'resilience': 11,'magic': 11},
@@ -147,4 +147,4 @@ demo = {'example': {
     "skill points": 3
 }}
 
-character_create(demo)
+character_create(demo)"""
