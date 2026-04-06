@@ -27,7 +27,7 @@ def input_inventory(character):
                 else:
                     add_item = u_input("Type the item you want to add to this inventory: ")
                     print(f"{add_item.capitalize()} successfully added to inventory.\n")
-                    character.inventory.append(add_item)
+                    character.add_inventory(add_item)
             case "remove": #remove from inventory
                 if not character.inventory:
                     print(f"There is no item to remove in {character.name}'s inventory!")

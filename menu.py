@@ -55,6 +55,7 @@ def main_menu():
                     case "4":
                         print('Type in "exit" if you want to back out.')
                         choose_change = choice_input(['name', 'backstory', 'both', 'exit'], "What would you like to change?(name/backstory/both/exit): ")
+                        old_name = character.name
                         #preserve original values in case they don't change
                         new_name = character.name
                         new_backstory = character.backstory
@@ -70,6 +71,11 @@ def main_menu():
                             case 'exit':
                                 continue
                         character.edit_info(new_name, new_backstory)
+
+                        #since names are dictionary keys as well, if the name was change, change the key too.
+                        if new_name != old_name:
+                            characters.chars[new_name] = characters.chars[old_name]
+                            characters.chars.pop(old_name)
                             
                     case _:
                         print("An error ocurred. Please try again.")
