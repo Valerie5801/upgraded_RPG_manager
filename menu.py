@@ -27,6 +27,8 @@ def main_menu():
             new_char = character_create(characters.chars)
             characters.add_char(new_char)
         character = search(characters.chars)
+        if character is None:
+            return None
         return characters.chars[character]
     #loop forever
     while True:
@@ -43,6 +45,9 @@ def main_menu():
             #character editing
             case "2":
                 character = get_character() #get character choice
+                if character is None:
+                    input("Press ENTER to continue > ")
+                    continue
                 print('You can: \n1. Edit Inventory\n2. Level Up\n3. Reset Skill Points\nChange the name/backstory')
                 edit_choice = choice_input(['1','2','3','4'], "What would you like to do? (1/2/3/4): ")
                 match edit_choice:
@@ -84,6 +89,9 @@ def main_menu():
             #character viewing
             case "3":
                 character = get_character()
+                if character is None:
+                    input("Press ENTER to continue > ")
+                    continue
                 print(character)
                 ask_view_graph = choice_input(["yes", "no"], "Do you want to see this character's stats on a graph?: ")
                 match ask_view_graph:
@@ -101,6 +109,9 @@ def main_menu():
             #character removal
             case "4":
                 character = get_character()
+                if character is None:
+                    input("Press ENTER to continue > ")
+                    continue
                 characters.remove_char(character.name)
                 print(f"{character.name} has been removed.")
 

@@ -28,7 +28,7 @@ def search(character_index):
     #if there were no results, use example character
     if not potentials:
         print("No characters match search! Using example character.")
-        return 'example'
+        return None
     index = 0
 
     #display matched characters and ask for choice
@@ -38,6 +38,6 @@ def search(character_index):
     choice = choice_input(potentials + list(range(1,index+1)), "Type the name of the character you want to view: ")
     if choice in potentials:
         return choice
-    elif choice in list(range(1,index+1)):
+    elif choice.isdigit():
         return potentials[choice-1]
 

@@ -58,7 +58,8 @@ def rolling():
 
 
     #ask what dice to roll
-    die_pick = choice_input(['1','2','3','4','5','6','7'], f"What die would you like to roll? \n1. D4\n2. D6\n3. D8\n4. D10\n5. Percentile (1-100)\n6. D12\n7. D20\n> ")
+    print("Available die: \n1. D4\n2. D6\n3. D8\n4. D10\n5. Percentile (1-100)\n6. D12\n7. D20\n")
+    die_pick = choice_input(['1','2','3','4','5','6','7'], f"What die would you like to roll?(1/2/3/4 etc.): ")
 
     rolled(die_pick)
 
