@@ -4,7 +4,7 @@ from helper import choice_input
 #character search
 def search(character_index):
     #get query
-    query = u_input('Search by name, level, race, or class: ')
+    query = u_input('Search by name: ')
     potentials = []
     #check for query in character names, levels, race, and class
     for name in character_index.keys():
@@ -27,7 +27,7 @@ def search(character_index):
     
     #if there were no results, use example character
     if not potentials:
-        print("No characters match search! Using example character.")
+        print("No characters match your search!")
         return None
     index = 0
 

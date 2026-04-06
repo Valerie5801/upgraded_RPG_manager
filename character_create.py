@@ -96,11 +96,13 @@ def character_create(character_index):
                 char_back = "No backstory here yet!"
 
         case "generate":
+            print("Please note that the backstory will be a random selection of words!")
             gen_info = RandomGenerator()
             name = gen_info.name
             new_race = gen_info.race
             class_choice = gen_info.role
             char_back = gen_info.backstory
+            print(f"Name: {name}\nRace: {new_race}\nClass: {class_choice}\nBackstory: {char_back}")
             
     #create character object using Character class
     new_char = Character(name.title(), new_race, class_choice, char_back)

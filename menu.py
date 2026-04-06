@@ -97,6 +97,7 @@ def main_menu():
                 match ask_view_graph:
                     case "yes":
                         graph = DataVizualization(analytics.df)
+                        print('Type either "radar" or "bar".')
                         ask_type_graph = choice_input(["radar", "bar"], "Do you want a bar or radar graph?: ")
                         match ask_type_graph:
                             case "radar":
@@ -125,7 +126,7 @@ def main_menu():
 
                 selected_chars = [first_char.name, second_char.name]
                 print("Type in either strength, dexterity, resilience, or magic. \nAlso note that in the terminal will still be information about the rest of the stats.")
-                chosen_stat = choice_input(['strength', 'dexterity', 'resilience', 'magic'], "What stat do you want to compare on the graph?: ")
+                chosen_stat = choice_input(['strength', 'dexterity', 'resilience', 'magic'], "What stat do you want to compare on the graph?(strength, dexterity, etc): ")
 
                 graph.compare_stat(chosen_stat, selected_chars)
                 comparison_info = analytics.compare_chars(first_char.name, second_char.name)
