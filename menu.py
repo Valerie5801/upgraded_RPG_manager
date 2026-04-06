@@ -75,7 +75,7 @@ def main_menu():
                         #since names are dictionary keys as well, if the name was change, change the key too.
                         if new_name != old_name:
                             characters.chars[new_name] = characters.chars[old_name]
-                            characters.chars.pop(old_name)
+                            del characters.chars[old_name]
                             
                     case _:
                         print("An error ocurred. Please try again.")
