@@ -31,8 +31,8 @@ def main_menu():
     while True:
         analytics = StatisticalAnalyzer(characters)
         #get user choice on what to do
-        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Remove a Character\n5. Compare two Characters\n6. Roll some dice\n7. Exit the Program")
-        user_choice = choice_input(['1','2','3','4','5','6','7'],"Type the number that corresponds with the action that you want to perform: ")
+        print("\nYou can: \n1. Create a Character \n2. Edit a Character \n3. View a Character \n4. Remove a Character\n5. Compare two Characters\n6. View all characters\n7. Roll some dice\n8. Exit the Program")
+        user_choice = choice_input(['1','2','3','4','5','6','7','8'],"Type the number that corresponds with the action that you want to perform: ")
         print("")
         match user_choice:
             #character creation
@@ -112,17 +112,24 @@ def main_menu():
                 second_char = get_character()
 
                 selected_chars = [first_char.name, second_char.name]
-                print("Type in either strength, dexterity, resilience, or magic")
-                chosen_stat = choice_input(['strength', 'dexterity', 'resilience', 'magic'], "What stat do you want to compare?: ")
+                print("Type in either strength, dexterity, resilience, or magic. \nAlso note that in the terminal will still be information about the rest of the stats.")
+                chosen_stat = choice_input(['strength', 'dexterity', 'resilience', 'magic'], "What stat do you want to compare on the graph?: ")
 
                 graph.compare_stat(chosen_stat, selected_chars)
+                comparison_info = analytics.compare_chars(first_char.name, second_char.name)
+                for line in comparison_info:
+                    print(line)
+                    
+            #show all characters
+            case "6":
+                characters.show_chars()
 
             #dice rolling
-            case "6":
+            case "7":
                 rolling()
             
             #exiting
-            case "7":
+            case "8":
                 break
 
             #error handling

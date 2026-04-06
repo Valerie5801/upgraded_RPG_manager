@@ -336,31 +336,13 @@ class Character:
     #method to print out the information of the character (will be used in the "view character" option of the menu)
     def __str__(self):
         show_stats = ""
+        show_inventory = ""
+        show_skills = ""
         for stat in self.stats.keys():
             show_stats += f'\t{stat}: {self.stats[stat]}\n'
-        show_info = f"Here is the information about {self.name}:" + f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\nStats:" + show_stats
+        for item in self.inventory:
+            show_inventory += f'\t-{item}\n'
+        for skill in self.skills.keys():
+            show_skills += f'\t{skill}" {self.skills[skill]}\n'
+        show_info = f"Here is the information about {self.name}:" + f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\nStats:\n" + show_stats + f"\nLevel: {self.level}\nSkill Points: {self.skill_points}\nSkills:\n" + show_skills + "Inventory:\n" + show_inventory + f"Backstory: \t{self.backstory}"
         return show_info
-    
-
-
-
-"""# make real character
-c1 = Character("Alice", "elf", "wizard", "magic girl")
-c1.stats = {'strength': 1, 'dexterity': 5, 'resilience': 2, 'magic': 8}
-
-c2 = Character("Bob", "orc", "fighter", "big guy")
-c2.stats = {'strength': 6, 'dexterity': 2, 'resilience': 4, 'magic': 0}
-
-# put into manager
-chars = ExistCharacters()
-chars.add_char(c1)
-chars.add_char(c2)
-
-# run analytics
-analytics = StatisticalAnalyzer(chars)
-print(analytics.build_dataframe())
-analytics.plot_stat("resilience")
-
-graph = DataVizualization(analytics.df)
-graph.radar_chart("Alice")
-graph.compare_stat("strength", ["Alice", "Bob"])"""
