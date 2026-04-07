@@ -32,9 +32,7 @@ class DataVizualization:
         plt.xlabel("Stats")
         plt.ylabel("Value")
 
-        plt.savefig("bar.png")  # save instead of show
-        plt.close()
-        """plt.show()""" #use this one when submitting/non codespace
+        plt.show() #use this one when submitting/non codespace
 
     #method to make a radar graph
     def radar_chart(self, name):
@@ -71,9 +69,7 @@ class DataVizualization:
         #title it
         plt.title(f"{name}'s Stat Profile")
 
-        plt.savefig("radar.png")
-        plt.close()
-        """plt.show()"""
+        plt.show()
 
     #method to make a graph that compares two people's stats
     def compare_stat(self, stat, names_list):
@@ -93,9 +89,7 @@ class DataVizualization:
 
         plt.tight_layout()
 
-        plt.savefig("comparison.png")
-        plt.close()
-        """plt.show()"""
+        plt.show()
 
 
 #StatisticalAnalyzer class (use Pandas)
