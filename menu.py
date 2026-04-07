@@ -47,8 +47,9 @@ def main_menu():
                 character = get_character() #get character choice
                 if character is None:
                     input("Press ENTER to continue > ")
+                    print("\033c", end="")
                     continue
-                print('You can: \n1. Edit Inventory\n2. Level Up\n3. Reset Skill Points\nChange the name/backstory')
+                print('\nYou can: \n1. Edit Inventory\n2. Level Up\n3. Reset Skill Points\nChange the name/backstory')
                 edit_choice = choice_input(['1','2','3','4'], "What would you like to do? (1/2/3/4): ")
                 match edit_choice:
                     case "1": #inventory management
@@ -75,6 +76,7 @@ def main_menu():
                                 new_name = u_input(f"What will be {character.name}'s new name?: ")
                                 new_backstory = input(f"Type in the backstory for {character.name} and press ENTER when done: ")
                             case 'exit':
+                                print("\033c", end="")
                                 continue
                         character.edit_info(new_name, new_backstory)
 
@@ -91,9 +93,10 @@ def main_menu():
                 character = get_character()
                 if character is None:
                     input("Press ENTER to continue > ")
+                    print("\033c", end="")
                     continue
                 print(character)
-                ask_view_graph = choice_input(["yes", "no"], "Do you want to see this character's stats on a graph?: ")
+                ask_view_graph = choice_input(["yes", "no"], "Do you want to see this character's stats on a graph?(yes/no): ")
                 match ask_view_graph:
                     case "yes":
                         graph = DataVizualization(analytics.df)
@@ -105,6 +108,7 @@ def main_menu():
                             case "bar":
                                 graph.bar_stat(character.name)
                     case "no":
+                        print("\033c", end="")
                         continue
             
             #character removal
@@ -112,6 +116,7 @@ def main_menu():
                 character = get_character()
                 if character is None:
                     input("Press ENTER to continue > ")
+                    print("\033c", end="")
                     continue
                 characters.remove_char(character.name)
                 print(f"{character.name} has been removed.")
@@ -121,9 +126,16 @@ def main_menu():
                 graph = DataVizualization(analytics.df)
                 print("Select the first character for comparison.")
                 first_char = get_character()
+                if first_char is None:
+                    input("Press ENTER to continue > ")
+                    print("\033c", end="")
+                    continue
                 print("Select the second character for comparison.")
                 second_char = get_character()
-
+                if second_char is None:
+                    input("Press ENTER to continue > ")
+                    print("\033c", end="")
+                    continue
                 selected_chars = [first_char.name, second_char.name]
                 print("Type in either strength, dexterity, resilience, or magic. \nAlso note that in the terminal will still be information about the rest of the stats.")
                 chosen_stat = choice_input(['strength', 'dexterity', 'resilience', 'magic'], "What stat do you want to compare on the graph?(strength, dexterity, etc): ")

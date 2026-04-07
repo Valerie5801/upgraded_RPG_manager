@@ -31,10 +31,16 @@ def level_up(character):
 
 #skill allocation
 def skill_allocation(character):
+    #if the character has no skills yet, tell the user.
+    if not character.skills:
+        print("No skills are available to assign skill points to right now.")
+        print("Earn a skill first by leveling up or choosing a race/class that grants a starting skill.")
+        return character
+
     #run until character has no skill points
     while character.skill_points > 0:
         print(f'\nYou have {character.skill_points} skill points to spend.')
-        #get input on whre to assign skill points
+        #get input on where to assign skill points
         print('Assign skill point where?: ')
         for i in character.skills.keys():
             print(f'\t{i.capitalize()}: {character.skills[i]}')

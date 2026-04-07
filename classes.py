@@ -344,5 +344,5 @@ class Character:
             show_inventory += f'\t-{item}\n'
         for skill in self.skills.keys():
             show_skills += f'\t{skill}: {self.skills[skill]}\n'
-        show_info = f"Here is the information about {self.name}:\n" + f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\nStats:\n" + show_stats + f"\nLevel: {self.level}\nSkill Points: {self.skill_points}\nSkills:\n" + show_skills + "Inventory:\n" + show_inventory + f"Backstory: \t{self.backstory}\n"
+        show_info = f"\nHere is the information about {self.name}:\n" + f"Name: {self.name}\nRace: {self.race}\nClass: {self.role}\nStats:\n" + show_stats + f"\nLevel: {self.level}\nSkill Points: {self.skill_points}\nSkills:\n" + show_skills + "Inventory:\n" + show_inventory + f"Backstory: {self.backstory}\n"
         return show_info
